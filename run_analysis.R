@@ -51,7 +51,7 @@ run_analysis <- function()
     ## Get the average of each variable
     average <- aggregate(x = dataall, by = list(dataall$volunteer, dataall$activity), FUN = "mean")
     
-    average1 <- merge(activity, average, by.x = "V1", by.y = )
+    average1 <- merge(activity, average, by.x = "V1", by.y = "activity", all = TRUE)
     
     write.table(average1, file = "./UCI HAR Dataset/average.txt")
     
