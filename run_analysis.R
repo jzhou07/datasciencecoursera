@@ -41,10 +41,14 @@ run_analysis <- function()
     testallsub <- cbind(subjecttestdata, ytestdata, xtestdatasub)
     trainallsub <- cbind(subjecttraindata, ytraindata, xtraindatasub)
     
-    ## Get the subset of the data
+    ## Get the total subset of the data
     dataallsub <- rbind(trainallsub, testallsub)
     
+    write.table(dataallsub, file = "./UCI HAR Dataset/mean_std.txt")
     
+    ## Get the average of each variable
+    average <- aggregate(x = dataall, by = list(dataall$volunteer, dataall$activity), FUN = "mean")
     
+    write.table(average, file = "./UCI HAR Dataset/average.txt")
     
 }
