@@ -9,6 +9,8 @@ run_analysis <- function()
     ytraindata <- read.table("./UCI HAR Dataset/train/y_train.txt")
     subjecttraindata <- read.table("./UCI HAR Dataset/train/subject_train.txt")
     
+    activity <- read.table("./UCI HAR Dataset/activity_labels.txt")
+    
     ## get data feature list, clean up the feature names
     feature <- read.table("./UCI HAR Dataset/features.txt")
     feature1 <- gsub("-", "", feature$V2)
@@ -49,6 +51,8 @@ run_analysis <- function()
     ## Get the average of each variable
     average <- aggregate(x = dataall, by = list(dataall$volunteer, dataall$activity), FUN = "mean")
     
-    write.table(average, file = "./UCI HAR Dataset/average.txt")
+    average1 <- merge(activity, average, by.x = "V1", by.y = )
+    
+    write.table(average1, file = "./UCI HAR Dataset/average.txt")
     
 }
